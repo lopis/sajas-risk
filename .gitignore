@@ -1,0 +1,8 @@
+# Everything
+*
+
+# Except the source
+!src/*
+!ContractnetTest.rs
+!README.md
+
