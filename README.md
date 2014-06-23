@@ -1,6 +1,7 @@
-repacl-example
-==============
+[1] https:a//github.com/lopis/sajas
+==========
+sajas-risk
+==========
 
-Examples made in Repast Simphony 2.1 and using SAJaS
+A SAJaS-based implementation of RISK
 
-https:a//github.com/lopis/sajas
