@@ -28,7 +28,9 @@ public class RequestInitiator extends AchieveREInitiator {
 	private GameAgentFaseBehaviour b;
 	private JoinGameBehaviour j;
 
-	private boolean isForcedFinished = false;;
+	private boolean isForcedFinished = false;
+
+	private ACLMessage m;;
 
 	public RequestInitiator(Agent a, ACLMessage msg) {
 		super(a, msg);
@@ -132,6 +134,7 @@ public class RequestInitiator extends AchieveREInitiator {
 	protected void handleInform(ACLMessage inform) {
 		try {
 			Action action = (Action) inform.getContentObject();
+			this.m = inform;
 			
 			if (action == null) {
 				switch (inform.getContent()) {
@@ -176,7 +179,8 @@ public class RequestInitiator extends AchieveREInitiator {
 
 	private void handleAction(Action a) {
 		if (b == null) {
-			System.out.println("Null behaviour");
+			//System.out.println("Null behaviour");
+			myAgent.addMail(m);
 		} else {
 			b.handleAction(a);
 		}
@@ -191,12 +195,12 @@ public class RequestInitiator extends AchieveREInitiator {
 		}
 	}
 	
-	@Override
-	public boolean done() {
-		return isForcedFinished 
-			|| super.done()
-			|| j!= null && j.done()
-			|| b!= null && b.done();
-	}
+//	@Override
+//	public boolean done() {
+//		return isForcedFinished 
+//			|| super.done()
+//			|| j!= null && j.done()
+//			|| b!= null && b.done();
+//	}
 
 }

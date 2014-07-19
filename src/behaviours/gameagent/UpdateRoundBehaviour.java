@@ -3,9 +3,7 @@ package behaviours.gameagent;
 import java.util.ArrayList;
 
 import communication.RequestInitiator;
-
 import agents.GameAgent;
-
 import up.fe.liacc.sajas.core.AID;
 import up.fe.liacc.repast.RepastAgent;
 import up.fe.liacc.sajas.core.Agent;
@@ -20,6 +18,9 @@ public class UpdateRoundBehaviour extends SimpleBehaviour {
 
 	public static final int FINAL = 0;
 	public static final int CONT = 1;
+	
+	static long initialTime = 0;
+	static int roundNum = 0;
 
 	private int currentRound, currentPlayer;
 	private ArrayList<AID> players;
@@ -35,10 +36,21 @@ public class UpdateRoundBehaviour extends SimpleBehaviour {
 		this.position = position;
 		this.attack = attack;
 		this.fortify = fortify;
+		if (initialTime == 0) {
+			initialTime = System.currentTimeMillis();
+		}
 	}
 
 	@Override
 	public void action() {
+		
+		long elapsedTime = System.currentTimeMillis() - initialTime;
+		System.out.println("# New Round # " + (elapsedTime * 0.001) + "\t" + (elapsedTime * 0.0005468741));
+		
+		if (System.currentTimeMillis() - initialTime > 10000) {
+			System.out.println("## END ##");
+			System.exit(0);
+		}
 
 		GameAgent agent = (GameAgent) myAgent;
 
@@ -56,9 +68,10 @@ public class UpdateRoundBehaviour extends SimpleBehaviour {
 			return;
 
 		currentRound++;
-		System.out.println("Round " + currentRound);
-		System.out.println("Current Player: " + currentPlayer);
-		System.out.println("Size: " + players.size());
+//		System.out.println("Round " + currentRound);
+//		System.out.println("Time " + (System.currentTimeMillis() - initialTime));
+//		System.out.println("Current Player: " + currentPlayer);
+//		System.out.println("Size: " + players.size());
 
 		position.setPlayer(players.get(currentPlayer));
 		position.reset();

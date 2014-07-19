@@ -19,12 +19,12 @@ public class BehaviourAction implements IAction{
 
 	public void addBehaviour(Behaviour b) {
 		behaviours.put(b.getID(), b);
-		//System.err.println("++++++ " + b.getClass() + "@" + b.getID());
+//		System.err.println("++++++ " + b.getClass().getSimpleName() + "@" + b.getID());
 	}
 
 	public void removeBehaviour(Behaviour b) {
 		behaviours.remove(b.getID());
-		//System.err.println("------ " + b.getClass() + "@" + b.getID());
+//		System.err.println("------ " + b.getClass().getSimpleName() + "@" + b.getID());
 	}
 
 	public void execute() {

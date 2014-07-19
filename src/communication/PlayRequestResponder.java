@@ -16,6 +16,11 @@ import up.fe.liacc.sajas.lang.acl.UnreadableException;
 import up.fe.liacc.sajas.proto.AchieveREResponder;
 import logic.Board;
 
+/**
+ * What players use to handle call for plays from the board
+ * @author joaolopes
+ *
+ */
 public class PlayRequestResponder extends AchieveREResponder {
 
 	/**

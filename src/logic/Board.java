@@ -292,7 +292,7 @@ public class Board implements Serializable {
 
 	@Override
 	public String toString() {
-		return territories.toString();
+		return allocations.toString();
 	}
 
 	public void setTerritoryPlayer(String player, String territory) {
@@ -786,6 +786,5 @@ public class Board implements Serializable {
 		}
 		return result;
 	}
-	
 	
 }
